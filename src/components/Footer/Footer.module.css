@@ -1,0 +1,58 @@
+.footer {
+  margin-top: 48px;
+  padding: 36px 0;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 24px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(17, 13, 27, 0.94), rgba(10, 8, 20, 0.94));
+}
+
+.brand {
+  max-width: 340px;
+}
+
+.logo {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.description {
+  color: #a49cbf;
+  line-height: 1.7;
+}
+
+.navigation,
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.navigation a,
+.socials a {
+  color: #bdb4d2;
+}
+
+.bottom {
+  padding-top: 18px;
+  text-align: center;
+  color: #8b83a3;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    padding: 22px;
+    border-radius: 22px;
+  }
+}
