@@ -8,14 +8,16 @@ interface Props {
 }
 
 export default function AnimeCard({ anime, index, onClick }: Props) {
+  const openDetails = () => onClick?.(anime.mal_id);
+
   return (
     <li
       className={css.card}
-      onClick={() => onClick?.(anime.mal_id)}
+      onClick={openDetails}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          onClick?.(anime.mal_id);
+          openDetails();
         }
       }}
       role="button"
@@ -23,18 +25,13 @@ export default function AnimeCard({ anime, index, onClick }: Props) {
     >
       {typeof index === "number" && <span className={css.rank}>{index + 1}</span>}
       <div className={css.posterWrapper}>
-        <img
-          className={css.poster}
-          src={anime.images.jpg.image_url}
-          alt={anime.title}
-        />
+        <img className={css.poster} src={anime.images.jpg.image_url} alt={anime.title} />
       </div>
 
       <div className={css.content}>
         <h3 className={css.title}>{anime.title}</h3>
         <p className={css.genre}>
-          {anime.genres?.slice(0, 2).map((genre) => genre.name).join(" • ") ||
-            "Anime Series"}
+          {anime.genres?.slice(0, 2).map((genre) => genre.name).join(" • ") || "Anime Series"}
         </p>
 
         <div className={css.info}>

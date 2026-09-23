@@ -2,12 +2,15 @@ import css from "./Header.module.css";
 import logo from "../../assets/logo.svg";
 import "../../index.css";
 import SearchAnime from "../SearchAnime/SearchAnime";
+import type { AuthUser } from "../../types/types";
 
 interface Props {
   search: string;
   setSearch: (search: string) => void;
   onLoginClick: () => void;
   onRegisterClick: () => void;
+  user: AuthUser | null;
+  onLogout: () => void;
 }
 
 export default function Header({
@@ -15,6 +18,8 @@ export default function Header({
   setSearch,
   onLoginClick,
   onRegisterClick,
+  user,
+  onLogout,
 }: Props) {
   return (
     <header className={css.header}>
@@ -48,12 +53,17 @@ export default function Header({
           <SearchAnime search={search} setSearch={setSearch} />
 
           <div className={css.actions}>
-            <button onClick={onLoginClick} className={css.loginBtn}>
-              Login
-            </button>
-            <button onClick={onRegisterClick} className={css.registerBtn}>
-              Register
-            </button>
+            {user ? (
+              <>
+                <span className={css.userName} title={user.email}>{user.username}</span>
+                <button onClick={onLogout} className={css.logoutBtn}>Logout</button>
+              </>
+            ) : (
+              <>
+                <button onClick={onLoginClick} className={css.loginBtn}>Login</button>
+                <button onClick={onRegisterClick} className={css.registerBtn}>Register</button>
+              </>
+            )}
           </div>
         </div>
       </div>

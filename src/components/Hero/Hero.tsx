@@ -1,7 +1,11 @@
 import css from "./Hero.module.css";
 import { useTopAnime } from "../../hooks/useTopAnime";
 
-export default function Hero() {
+interface Props {
+  onAnimeSelect: (animeId: number) => void;
+}
+
+export default function Hero({ onAnimeSelect }: Props) {
   const { data: topAnime } = useTopAnime();
   const featured = topAnime?.[0];
 
@@ -13,6 +17,10 @@ export default function Hero() {
   const synopsis =
     featured?.synopsis ??
     "A fearless pirate with dreams of becoming King of the Pirates sails through the Grand Line in search of the legendary treasure.";
+
+  const openTrailer = () => {
+    if (featured?.trailer.url) window.open(featured.trailer.url, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <section className={css.heroSection}>
@@ -42,8 +50,16 @@ export default function Hero() {
             </div>
 
             <div className={css.actions}>
-              <button className={css.watchBtn}>Watch now</button>
-              <button className={css.detailsBtn}>Details</button>
+              <button className={css.watchBtn} onClick={openTrailer} disabled={!featured?.trailer.url}>
+                Watch trailer
+              </button>
+              <button
+                className={css.detailsBtn}
+                onClick={() => featured && onAnimeSelect(featured.mal_id)}
+                disabled={!featured}
+              >
+                Details
+              </button>
             </div>
 
             <div className={css.stats}>

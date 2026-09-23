@@ -101,7 +101,8 @@
 }
 
 .loginBtn,
-.registerBtn {
+.registerBtn,
+.logoutBtn {
   height: 46px;
   padding: 0 18px;
   border-radius: 14px;
@@ -114,7 +115,8 @@
 }
 
 .loginBtn:hover,
-.registerBtn:hover {
+.registerBtn:hover,
+.logoutBtn:hover {
   transform: translateY(-1px);
 }
 
@@ -127,6 +129,21 @@
   border: 1px solid transparent;
   background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
   box-shadow: 0 14px 30px rgba(124, 58, 237, 0.28);
+}
+
+.logoutBtn {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.userName {
+  max-width: 150px;
+  overflow: hidden;
+  color: #d8ceef;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media (max-width: 1100px) {
@@ -164,7 +181,8 @@
   }
 
   .loginBtn,
-  .registerBtn {
+  .registerBtn,
+  .logoutBtn {
     flex: 1;
   }
 }

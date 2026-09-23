@@ -47,6 +47,13 @@
   cursor: pointer;
 }
 
+.closeBtn:disabled,
+.submitBtn:disabled,
+.switchBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
 .iconWrap {
   position: relative;
   display: grid;
@@ -104,6 +111,24 @@
 
 .form input::placeholder {
   color: #8f88a8;
+}
+
+.form input:focus-visible,
+.closeBtn:focus-visible,
+.submitBtn:focus-visible,
+.switchBtn:focus-visible {
+  outline: 2px solid #b89cff;
+  outline-offset: 3px;
+}
+
+.error {
+  padding: 12px 14px;
+  border: 1px solid rgba(248, 113, 113, 0.38);
+  border-radius: 12px;
+  background: rgba(248, 113, 113, 0.1);
+  color: #fecaca;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .submitBtn {
